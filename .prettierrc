@@ -8,7 +8,7 @@
   "bracketSpacing": true,
   "arrowParens": "always",
   "importOrder": [
-    "^assets|components|consts|features|hooks|layouts|lib|pages|routes|services|utils/(.*)$",
+    "^assets|components|consts|features|hooks|layouts|lib|pages|providers|routes|services|types|utils/(.*)$",
     "^[./]"
   ],
   "importOrderSeparation": true,
