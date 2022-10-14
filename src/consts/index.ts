@@ -1,0 +1,1 @@
+export const START_TEXT = "App is running! Happy coding! :)"
