@@ -1,5 +1,15 @@
 import React from 'react';
 
-import { START_TEXT } from 'consts/index';
+import { Loading } from 'components/loading';
+import { useMiniFigs } from 'hooks/useMiniFigs';
 
-export const Root = () => <div id="container">{START_TEXT}</div>;
+export const Root = () => {
+  const { data: miniFigs, isLoading } = useMiniFigs('harry potter');
+
+  return (
+    <div id="container">
+      {isLoading && <Loading />}
+      {miniFigs && JSON.stringify(miniFigs)}
+    </div>
+  );
+};
