@@ -12,7 +12,7 @@ export const HomePage: FunctionComponent = () => (
   <Section>
     <Typography component="h1">{HEADER}</Typography>
     <Button variant="contained">
-      <Link to={ROUTER_PATHS.minfigs}>{LINK_TEXT_CONTENT}</Link>
+      <Link to={ROUTER_PATHS.minfigs.path}>{LINK_TEXT_CONTENT}</Link>
     </Button>
   </Section>
 );
