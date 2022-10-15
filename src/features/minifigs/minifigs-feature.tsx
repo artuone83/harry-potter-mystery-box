@@ -1,28 +1,43 @@
-import { Box } from '@mui/material';
-import React from 'react';
-import { getRandomArrayOfNumbers } from 'utils';
+import { Button, Typography } from '@mui/material';
+import React, { FunctionComponent } from 'react';
+import { Link } from 'react-router-dom';
 
+import { MinifigCard } from './components/minifig-card';
+import { useRandomMinifigs } from './hooks';
 import { Loading } from 'components';
-import { useMinifigs } from 'hooks';
+import { useMinifigsQuery } from 'hooks';
 import { Section } from 'layouts';
+import { ROUTER_PATHS } from 'routes';
 
-export const MinifigsFeature = () => {
-  const { data, isLoading } = useMinifigs('harry potter');
-  let miniFigsIndexes: number[] = [];
+const HEADING = 'CHOOSE YOUR MINIFIG';
 
-  if (data?.count) {
-    miniFigsIndexes = getRandomArrayOfNumbers({
-      min: 0,
-      max: data.count,
-      results: data.count >= 3 ? 3 : data.count,
-    });
-  }
+export const MinifigsFeature: FunctionComponent = () => {
+  const [selected, setSelected] = React.useState<number | null>(null);
+
+  const { data, isLoading } = useMinifigsQuery({ search: 'harry potter' });
+  const { randomMinifigs } = useRandomMinifigs(data);
+
   return (
     <Section>
+      <Typography component="h1">{HEADING}</Typography>
       {isLoading && <Loading />}
-      {miniFigsIndexes.map((idxNumber) => (
-        <Box key={idxNumber}>{data?.results[idxNumber].name}</Box>
-      ))}
+      {data &&
+        randomMinifigs.map((idxNumber) => {
+          const { results } = data;
+          const figure = { ...results[idxNumber], customId: idxNumber };
+
+          return (
+            <MinifigCard
+              key={idxNumber}
+              selected={selected}
+              setSelected={setSelected}
+              {...figure}
+            />
+          );
+        })}
+      <Button disabled={!selected} variant="contained">
+        <Link to={ROUTER_PATHS.summary}>Process to shipment</Link>
+      </Button>
     </Section>
   );
 };

@@ -5,8 +5,8 @@ import { ErrorPage, HomePage, MinifigsPage, Root, SummaryPage } from 'pages';
 
 export const ROUTER_PATHS = {
   root: '/',
-  minfigs: 'minifigs',
-  summary: 'summary',
+  minfigs: '/minifigs',
+  summary: '/summary',
 };
 
 export const router = createBrowserRouter([
