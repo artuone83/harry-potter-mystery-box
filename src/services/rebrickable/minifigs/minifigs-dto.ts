@@ -1,6 +1,6 @@
 import { MaybeNull } from 'types';
 
-export interface MiniFigsDTO {
+export interface MinifigsDTO {
   set_num: string;
   name: string;
   num_parts: number;
@@ -9,9 +9,9 @@ export interface MiniFigsDTO {
   last_modified_dt: string;
 }
 
-export interface MiniFigsResponseDTO {
+export interface MinifigsResponseDTO {
   count: number;
   next: MaybeNull<number>;
   previous: MaybeNull<number>;
-  results: MiniFigsDTO[];
+  results: MinifigsDTO[];
 }

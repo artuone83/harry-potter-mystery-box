@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
 
-import { MiniFigsFeature } from 'features';
+import { MinifigsFeature } from 'features';
 
-export const MinifigsPage: FunctionComponent = () => <MiniFigsFeature />;
+export const MinifigsPage: FunctionComponent = () => <MinifigsFeature />;

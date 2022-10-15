@@ -3,11 +3,11 @@ import React from 'react';
 import { getRandomArrayOfNumbers } from 'utils';
 
 import { Loading } from 'components';
-import { useMiniFigs } from 'hooks';
+import { useMinifigs } from 'hooks';
 import { Section } from 'layouts';
 
-export const MiniFigsFeature = () => {
-  const { data, isLoading } = useMiniFigs('harry potter');
+export const MinifigsFeature = () => {
+  const { data, isLoading } = useMinifigs('harry potter');
   let miniFigsIndexes: number[] = [];
 
   if (data?.count) {

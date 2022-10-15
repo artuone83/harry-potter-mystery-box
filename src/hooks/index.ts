@@ -1,1 +1,1 @@
-export * from './use-mini-figs';
+export * from './use-minifigs';
