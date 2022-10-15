@@ -8,7 +8,7 @@ import { ROUTER_PATHS } from 'routes';
 export const HEADER = 'LEGO MINIFIGS MISTERY BOX';
 export const LINK_TEXT_CONTENT = `Let's go!`;
 
-export const Home: FunctionComponent = () => (
+export const HomePage: FunctionComponent = () => (
   <Section>
     <Typography component="h1">{HEADER}</Typography>
     <Button variant="contained">

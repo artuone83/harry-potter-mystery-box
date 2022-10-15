@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 
-import { ErrorPage, Home, Minifigs, Root, Summary } from 'pages';
+import { ErrorPage, HomePage, MinifigsPage, Root, SummaryPage } from 'pages';
 
 export const ROUTER_PATHS = {
   root: '/',
@@ -17,15 +17,15 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />,
+        element: <HomePage />,
       },
       {
         path: ROUTER_PATHS.minfigs,
-        element: <Minifigs />,
+        element: <MinifigsPage />,
       },
       {
         path: ROUTER_PATHS.summary,
-        element: <Summary />,
+        element: <SummaryPage />,
       },
     ],
   },

@@ -1,12 +1,12 @@
 import { Box } from '@mui/material';
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 import { getRandomArrayOfNumbers } from 'utils';
 
 import { Loading } from 'components';
 import { useMiniFigs } from 'hooks';
 import { Section } from 'layouts';
 
-export const Minifigs: FunctionComponent = () => {
+export const MiniFigsFeature = () => {
   const { data, isLoading } = useMiniFigs('harry potter');
   let miniFigsIndexes: number[] = [];
 
@@ -17,7 +17,6 @@ export const Minifigs: FunctionComponent = () => {
       results: data.count >= 3 ? 3 : data.count,
     });
   }
-
   return (
     <Section>
       {isLoading && <Loading />}
