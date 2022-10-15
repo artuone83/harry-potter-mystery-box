@@ -1,15 +1,10 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 
-import { Loading } from 'components/loading';
-import { useMiniFigs } from 'hooks/useMiniFigs';
+import { Main } from 'layouts/main';
 
-export const Root = () => {
-  const { data: miniFigs, isLoading } = useMiniFigs('harry potter');
-
-  return (
-    <div id="container">
-      {isLoading && <Loading />}
-      {miniFigs && JSON.stringify(miniFigs)}
-    </div>
-  );
-};
+export const Root = () => (
+  <Main>
+    <Outlet />
+  </Main>
+);

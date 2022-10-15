@@ -1,6 +1,6 @@
 import { httpClient } from 'lib/axios';
 
-import { MiniFigsDTO } from './minifigs-dto';
+import { MiniFigsResponseDTO } from './minifigs-dto';
 
 const URL = {
   path: '/minifigs',
@@ -11,5 +11,5 @@ const URL = {
 
 export const getMiniFigs = (search: string) =>
   httpClient
-    .get<MiniFigsDTO[]>(!search ? URL.path : `${URL.path}/?${URL.params.search}=${search}`)
+    .get<MiniFigsResponseDTO>(!search ? URL.path : `${URL.path}/?${URL.params.search}=${search}`)
     .then((response) => response.data);
