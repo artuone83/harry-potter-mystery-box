@@ -1,1 +1,1 @@
-export * from './use-minifigs';
+export * from './use-minifigs-query';
