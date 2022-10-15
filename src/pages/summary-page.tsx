@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
 
-import { Section } from 'layouts/section';
+import { SummaryFeature } from 'features/summary';
 
-export const SummaryPage: FunctionComponent = () => <Section>Summary</Section>;
+export const SummaryPage: FunctionComponent = () => <SummaryFeature />;
