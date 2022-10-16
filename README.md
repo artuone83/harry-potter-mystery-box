@@ -1,6 +1,6 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/9dadbee6-9319-4ae9-990b-b0976c124f91/deploy-status)](https://app.netlify.com/sites/aquamarine-sprinkles-6ee97d/deploys)
 
-# Getting Started with Create React App
+# This app is available [here](https://harry-potter-mystery-box.netlify.app/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
