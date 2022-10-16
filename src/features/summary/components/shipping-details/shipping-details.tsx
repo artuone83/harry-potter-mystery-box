@@ -1,9 +1,8 @@
-import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Stack, TextField, Typography } from '@mui/material';
 import React from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import zod from 'zod';
 
+import { useFormProps } from './consts';
 import { Section } from 'layouts';
 
 interface IFormInputs {
@@ -17,33 +16,6 @@ interface IFormInputs {
   state: string;
   zipCode: string;
 }
-
-const validationsSchema = zod.object({
-  name: zod.string().min(1, { message: "Can't be empty" }),
-  surname: zod.string().min(1, { message: "Can't be empty" }),
-  phoneNumber: zod.string().min(1, { message: "Can't be empty" }),
-  email: zod.string().min(1, { message: "Can't be empty" }),
-  dateOfBirth: zod.string().min(1, { message: "Can't be empty" }),
-  address: zod.string().min(1, { message: "Can't be empty" }),
-  city: zod.string().min(1, { message: "Can't be empty" }),
-  state: zod.string().min(1, { message: "Can't be empty" }),
-  zipCode: zod.string().min(1, { message: "Can't be empty" }),
-});
-
-const useFormProps = {
-  defaultValues: {
-    name: '',
-    surname: '',
-    phoneNumber: '',
-    email: '',
-    dateOfBirth: '',
-    address: '',
-    city: '',
-    state: '',
-    zipCode: '',
-  },
-  resolver: zodResolver(validationsSchema),
-};
 
 export const ShippingDetails = () => {
   const { handleSubmit, control, reset } = useForm<IFormInputs>(useFormProps);
