@@ -1,4 +1,4 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/9dadbee6-9319-4ae9-990b-b0976c124f91/deploy-status)](https://app.netlify.com/sites/aquamarine-sprinkles-6ee97d/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9dadbee6-9319-4ae9-990b-b0976c124f91/deploy-status)](https://app.netlify.com/sites/harry-potter-mystery-box/deploys)
 
 # This app is available [here](https://harry-potter-mystery-box.netlify.app/)
 
