@@ -1,6 +1,7 @@
-import { Box, ImageList, ImageListItem, Link as MuiLink, Typography } from '@mui/material';
+import { Card, Link as MuiLink, Stack, Typography } from '@mui/material';
 import React, { FunctionComponent } from 'react';
 
+import { MinifigImg } from 'components/minifig-img';
 import { MaybeNull } from 'types';
 
 export interface MinifigCardProps {
@@ -16,23 +17,24 @@ export const MinifigCard: FunctionComponent<MinifigCardProps> = (props) => {
   const { setNumber, name, setImgUrl, setUrl, selectedFigure, setSelectedFigure } = props;
 
   return (
-    <Box
+    <Card
       sx={{
-        border: `2px solid ${selectedFigure === setNumber ? 'hotPink' : 'black'}`,
-        padding: 1,
-        margin: 2,
+        minWidth: '30%',
+        ...(selectedFigure === setNumber && { boxShadow: '0px 0px 12px 12px rgb(242, 140, 40)' }),
       }}
       onClick={() => setSelectedFigure(setNumber)}
     >
-      <ImageList sx={{ width: 164, height: 164 }} cols={1}>
-        <ImageListItem>
-          <img src={setImgUrl} width={164} height={164} alt="name" loading="lazy" />
-        </ImageListItem>
-      </ImageList>
-      <Typography variant="body2">{name}</Typography>
-      <MuiLink href={setUrl} underline="always" target="_blank" rel="noopener">
-        Show details
-      </MuiLink>
-    </Box>
+      <Stack alignItems="center">
+        <MinifigImg>
+          <img src={setImgUrl} width={164} height={164} alt={name} loading="lazy" />
+        </MinifigImg>
+        <Typography component="p" variant="subtitle2" textAlign="center" mb={2}>
+          {name}
+        </Typography>
+        <MuiLink href={setUrl} underline="always" target="_blank" rel="noopener">
+          Show details
+        </MuiLink>
+      </Stack>
+    </Card>
   );
 };

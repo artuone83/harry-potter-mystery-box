@@ -1,50 +1,76 @@
-import { Box, Button, Stack, Typography } from '@mui/material';
-import React from 'react';
+import { Box, Button, Card, Stack, Typography } from '@mui/material';
+import React, { FunctionComponent } from 'react';
+import { useFormContext } from 'react-hook-form';
 
-import { Loading } from 'components';
-import { useSummaryParams } from 'features/summary/hooks';
-import { useMinifigDetailsQuery, useMinifigPartsQuery } from 'hooks';
+import { MinifigImg } from 'components/minifig-img';
 import { Section } from 'layouts';
+import { MinifigPartsResponseDTO, MinifigsDTO } from 'services';
 
-export const PartsSummary = () => {
-  const { set_num } = useSummaryParams();
-  const { data: details, isLoading: areDetailsLoading } = useMinifigDetailsQuery(set_num as string);
-  const { data: parts, isLoading: arePartsLoading } = useMinifigPartsQuery(set_num as string);
+interface PartsSummaryProps {
+  details: MinifigsDTO;
+  parts: MinifigPartsResponseDTO;
+}
 
-  const allDataLoaded = parts && details;
+export const PartsSummary: FunctionComponent<PartsSummaryProps> = ({ details, parts }) => {
+  const { handleSubmit } = useFormContext();
 
   return (
-    <Section sx={{ border: '6px solid lightSalmon' }}>
-      {(areDetailsLoading || arePartsLoading) && <Loading />}
-      {allDataLoaded && (
-        <>
-          <Typography component="h2" sx={{ marginBottom: 5, border: '12px solid lightGreen' }}>
-            SUMMARY
+    <Section>
+      <Card sx={{ margin: 0 }}>
+        <Typography
+          sx={{ color: '#000000', textAlign: 'left', marginBottom: 2 }}
+          component="h2"
+          variant="h5"
+        >
+          Summary
+        </Typography>
+        <Stack alignItems="center" mb={2}>
+          <MinifigImg>
+            <img
+              src={details.set_img_url}
+              width={164}
+              height={164}
+              alt={details.name}
+              loading="lazy"
+            />
+          </MinifigImg>
+          <Typography component="p" variant="subtitle2" textAlign="center" mb={4}>
+            {details.name}
           </Typography>
-
-          <Box sx={{ marginBottom: 5, border: '12px solid lightGreen' }}>
-            <Typography>{details.set_img_url}</Typography>
-            <Typography>{details.name}</Typography>
-          </Box>
-
-          <Box sx={{ border: '12px solid lightBlue' }}>
-            <Typography component="h3">There are {parts.count} parts in this minifig:</Typography>
-            <Stack direction="column" spacing={2}>
-              {parts.results.map(({ part: { part_img_url, name, part_num } }) => (
-                <Stack key={name} direction="row" spacing={3} alignItems="center">
-                  <p>{part_img_url}</p>
-                  <Stack direction="column" spacing={4} justifyContent="center">
-                    <Typography>{name}</Typography>
-                    <Typography sx={{ color: 'orange' }}>{part_num}</Typography>
-                  </Stack>
+        </Stack>
+        <Box mb={20}>
+          <Typography component="p" variant="subtitle2" mb={4}>
+            There are {parts.count} parts in this minifig:
+          </Typography>
+          <Stack direction="column" spacing={2}>
+            {parts.results.map(({ part: { part_img_url, name, part_num } }) => (
+              <Stack key={name} direction="row" alignItems="center">
+                <MinifigImg sx={{ width: '82px', height: '82px' }}>
+                  <img src={part_img_url} width={82} height={82} alt={name} loading="lazy" />
+                </MinifigImg>
+                <Stack direction="column" justifyContent="center" width="calc(100% - 82px)" pl={4}>
+                  <Typography component="p" variant="subtitle2" noWrap>
+                    {name}
+                  </Typography>
+                  <Typography sx={{ color: '#F28C28' }} component="p" variant="subtitle2">
+                    {part_num}
+                  </Typography>
                 </Stack>
-              ))}
-            </Stack>
-          </Box>
-
-          <Button variant="contained">Submit</Button>
-        </>
-      )}
+              </Stack>
+            ))}
+          </Stack>
+        </Box>
+        <Stack direction="row" justifyContent="center">
+          <Button
+            variant="contained"
+            type="submit"
+            // eslint-disable-next-line no-console
+            onClick={handleSubmit((formData) => console.log(formData))}
+          >
+            Submit
+          </Button>
+        </Stack>
+      </Card>
     </Section>
   );
 };

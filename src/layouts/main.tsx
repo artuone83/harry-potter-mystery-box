@@ -9,4 +9,11 @@ export const Main: FunctionComponent<ReactChildren> = ({ children }) => (
   </Box>
 );
 
-const MAIN_STYLE = { background: 'lightgray', minHeight: '100vh' };
+const MAIN_STYLE = {
+  minHeight: '100vh',
+  background: '#1C2434',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  padding: 2,
+};
