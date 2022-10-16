@@ -1,15 +1,13 @@
+import { API_PATHS } from '../consts';
 import { httpClient } from 'lib/axios';
 
 import { MinifigsResponseDTO } from './minifigs-dto';
 
-const URL = {
-  path: '/minifigs',
-  params: {
-    search: 'search',
-  },
-} as const;
+const {
+  minifigs: { path, params },
+} = API_PATHS;
 
 export const getMinifigs = (search: string) =>
   httpClient
-    .get<MinifigsResponseDTO>(!search ? URL.path : `${URL.path}/?${URL.params.search}=${search}`)
+    .get<MinifigsResponseDTO>(!search ? path : `${path}/?${params.search}=${search}`)
     .then((response) => response.data);
