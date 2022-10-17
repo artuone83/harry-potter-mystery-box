@@ -1,11 +1,20 @@
-import { Box, Button, Card, Stack, Typography } from '@mui/material';
-import React, { FunctionComponent } from 'react';
+import { ThumbDown, ThumbUp } from '@mui/icons-material';
+import { LoadingButton } from '@mui/lab';
+import { Box, Card, Stack, Typography } from '@mui/material';
+import React, { FunctionComponent, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 
 import { MinifigImg } from 'components/minifig-img';
 import { Section } from 'layouts';
+import { httpClient } from 'lib/axios';
 import { MinifigPartsResponseDTO, MinifigsDTO } from 'services';
 
+const POST = {
+  url: 'https://jsonplaceholder.typicode.com/pposts',
+  headers_app_json: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
+};
 interface PartsSummaryProps {
   details: MinifigsDTO;
   parts: MinifigPartsResponseDTO;
@@ -13,6 +22,10 @@ interface PartsSummaryProps {
 
 export const PartsSummary: FunctionComponent<PartsSummaryProps> = ({ details, parts }) => {
   const { handleSubmit } = useFormContext();
+  const [isFormSubmitting, setIsFormSubmitting] = useState(false);
+  const [isSuccessfullySubmitted, setIsSuccessfullySubmitted] = useState<boolean | undefined>(
+    undefined,
+  );
 
   return (
     <Section>
@@ -61,14 +74,39 @@ export const PartsSummary: FunctionComponent<PartsSummaryProps> = ({ details, pa
           </Stack>
         </Box>
         <Stack direction="row" justifyContent="center">
-          <Button
+          <LoadingButton
             variant="contained"
             type="submit"
-            // eslint-disable-next-line no-console
-            onClick={handleSubmit((formData) => console.log(formData))}
+            loading={isFormSubmitting}
+            onClick={handleSubmit((formData) => {
+              // v1 example if backend is expecting same key, value pairs in request
+              // v2 Form data
+              setIsFormSubmitting(true);
+
+              httpClient
+                .post(POST.url, JSON.stringify(formData), {
+                  headers: POST.headers_app_json,
+                })
+                .then((response) => {
+                  if (response.status === 201) {
+                    setIsSuccessfullySubmitted(true);
+                  }
+                })
+                .catch((error) => {
+                  setIsSuccessfullySubmitted(false);
+                  console.error('submit_error', error);
+                })
+                .finally(() => {
+                  setIsFormSubmitting(false);
+                });
+            })}
           >
-            Submit
-          </Button>
+            <Box component="p" sx={{ display: 'flex', justifyContent: 'center', gap: '8px' }}>
+              Submit
+              {isSuccessfullySubmitted && <ThumbUp />}
+              {isSuccessfullySubmitted !== undefined && !isSuccessfullySubmitted && <ThumbDown />}
+            </Box>
+          </LoadingButton>
         </Stack>
       </Card>
     </Section>
