@@ -10,7 +10,7 @@ import { httpClient } from 'lib/axios';
 import { MinifigPartsResponseDTO, MinifigsDTO } from 'services';
 
 const POST = {
-  url: 'https://jsonplaceholder.typicode.com/pposts',
+  url: 'https://jsonplaceholder.typicode.com/posts',
   headers_app_json: {
     'Content-type': 'application/json; charset=UTF-8',
   },
