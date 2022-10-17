@@ -1,16 +1,20 @@
 interface GetRandomNumbersParams {
-  min: number;
-  max: number;
+  numberFrom: number;
+  numberTo: number;
   results?: number;
 }
 
 // TODO: handle possible duplicates
-export const getRandomArrayOfNumbers = ({ min, max, results = 3 }: GetRandomNumbersParams) => {
+export const getRandomArrayOfNumbers = ({
+  numberFrom,
+  numberTo,
+  results = 3,
+}: GetRandomNumbersParams) => {
   const numbers = [];
   let i = 0;
 
   while (i < results) {
-    numbers.push(Math.floor(Math.random() * max) + min);
+    numbers.push(Math.floor(Math.random() * numberTo) + numberFrom);
     i++;
   }
 
