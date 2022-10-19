@@ -8,7 +8,6 @@ export const useRandomMinifigs = (data: MinifigsResponseDTO | undefined) =>
     () => ({
       randomMinifigs: data?.count
         ? getRandomArrayOfNumbers({
-            numberFrom: 0,
             numberTo: data.count,
             results: data.count >= 3 ? 3 : data.count,
           })

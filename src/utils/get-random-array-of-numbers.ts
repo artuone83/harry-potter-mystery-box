@@ -1,20 +1,37 @@
 interface GetRandomNumbersParams {
-  numberFrom: number;
-  numberTo: number;
+  numberTo?: number;
   results?: number;
 }
 
-// TODO: handle possible duplicates
-export const getRandomArrayOfNumbers = ({
-  numberFrom,
-  numberTo,
-  results = 3,
-}: GetRandomNumbersParams) => {
-  const numbers = [];
+export const getRandomArrayOfNumbers = ({ numberTo = 3, results = 3 }: GetRandomNumbersParams) => {
+  const numbers: number[] = [];
   let i = 0;
+  const getRandomNumber = () => Math.floor(Math.random() * numberTo) + 0;
 
   while (i < results) {
-    numbers.push(Math.floor(Math.random() * numberTo) + numberFrom);
+    const randomNumber = getRandomNumber();
+
+    if (i > 0) {
+      if (randomNumber === numbers[i - 1]) {
+        let newRandomNumber = getRandomNumber();
+        let j = 0;
+        while (j < results) {
+          if (randomNumber === newRandomNumber && newRandomNumber === numbers[i - 1]) {
+            newRandomNumber = getRandomNumber();
+            j++;
+          } else {
+            break;
+          }
+        }
+
+        numbers[i] = newRandomNumber;
+      } else {
+        numbers.push(randomNumber);
+      }
+    } else {
+      numbers.push(randomNumber);
+    }
+
     i++;
   }
 
