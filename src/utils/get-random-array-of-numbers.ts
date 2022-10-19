@@ -16,7 +16,7 @@ export const getRandomArrayOfNumbers = ({ numberTo = 3, results = 3 }: GetRandom
         let newRandomNumber = getRandomNumber();
         let j = 0;
 
-        while (j < results) {
+        while (j < 6) {
           if (newRandomNumber === randomNumber && newRandomNumber === numbers[i - 1]) {
             newRandomNumber = getRandomNumber();
             j++;
