@@ -26,7 +26,7 @@ export const MinifigsFeature: FunctionComponent = () => {
       </Typography>
       {isLoading && <Loading />}
       {data && (
-        <Stack direction={{ xs: 'column', sm: 'row' }} mb={8}>
+        <Stack direction={{ xs: 'column', md: 'row' }} mb={8}>
           {randomMinifigs.map((idxNumber) => {
             const { results } = data;
             const { set_num, name, set_img_url, set_url } = results[idxNumber];

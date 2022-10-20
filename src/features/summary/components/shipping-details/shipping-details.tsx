@@ -41,8 +41,15 @@ export const ShippingDetails = () => {
 
   return (
     <FormProvider {...methods}>
-      <Stack direction="row" spacing={3}>
-        <Box flex={3} alignSelf="center">
+      <Stack direction={{ xs: 'column', md: 'row' }} sx={{ width: { xs: '100%' } }} spacing={3}>
+        <Box
+          sx={{
+            alignSelf: { xs: 'flex-start', md: 'center' },
+            flex: 3,
+            width: '100%',
+          }}
+          marginBottom={{ xs: 3, md: 0 }}
+        >
           <Section>
             <Typography component="h2" variant="h5" textAlign="left" mb={4}>
               Shipping details
@@ -179,7 +186,7 @@ export const ShippingDetails = () => {
             </form>
           </Section>
         </Box>
-        <Box width="30%">
+        <Box sx={{ width: { xs: '100%', md: '30%' } }}>
           <PartsSummary details={details} parts={parts} />
         </Box>
       </Stack>
