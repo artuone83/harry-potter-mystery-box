@@ -1,7 +1,8 @@
 import { useMemo } from 'react';
-import { getRandomArrayOfNumbers } from 'utils';
 
 import { MinifigsResponseDTO } from 'services';
+
+import { getRandomArrayOfNumbers } from 'utils';
 
 export const useRandomMinifigs = (data: MinifigsResponseDTO | undefined) =>
   useMemo(

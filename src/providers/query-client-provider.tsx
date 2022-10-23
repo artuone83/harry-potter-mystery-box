@@ -3,6 +3,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import React, { FunctionComponent } from 'react';
 
 import { STATUS_CODES } from 'services';
+
 import { ReactChildren } from 'types';
 
 const queryClient = new QueryClient({

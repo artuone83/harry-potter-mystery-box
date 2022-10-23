@@ -1,14 +1,18 @@
 import { Button, Stack, Typography } from '@mui/material';
 import React, { FunctionComponent } from 'react';
 
-import { MinifigCard } from './components/minifig-card';
-import { useRandomMinifigs } from './hooks';
-import { Loading } from 'components';
-import { RouterLink } from 'components/router-link';
+import { Loading, RouterLink } from 'components';
+
 import { useMinifigsQuery } from 'hooks';
+
 import { Section } from 'layouts';
+
 import { ROUTER_PATHS } from 'routes';
+
 import { MaybeNull } from 'types';
+
+import { MinifigCard } from './components';
+import { useRandomMinifigs } from './hooks';
 
 const HEADING = 'Choose your minifig';
 const LINK_TEXT = 'Process to shipment';
@@ -47,7 +51,7 @@ export const MinifigsFeature: FunctionComponent = () => {
       )}
       <Stack alignItems="center">
         <RouterLink
-          to={`${ROUTER_PATHS.summary.absolute_path(`${selectedFigure}`)}`}
+          to={ROUTER_PATHS.summary.absolute_path(selectedFigure as string)}
           style={{ ...(!selectedFigure && { pointerEvents: 'none' }) }}
         >
           <Button disabled={!selectedFigure} variant="contained">

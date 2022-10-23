@@ -4,9 +4,12 @@ import { Box, Card, Stack, Typography } from '@mui/material';
 import React, { FunctionComponent, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import { MinifigImg } from 'components/minifig-img';
+import { MinifigImg } from 'components';
+
 import { Section } from 'layouts';
-import { httpClient } from 'lib/axios';
+
+import { httpClient } from 'lib';
+
 import { MinifigPartsResponseDTO, MinifigsDTO } from 'services';
 
 const POST = {

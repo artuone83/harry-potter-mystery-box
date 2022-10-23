@@ -1,6 +1,6 @@
-import { API_PATHS } from '../consts';
 import { httpClient } from 'lib/axios';
 
+import { API_PATHS } from '../consts';
 import { MinifigsDTO } from '../minifigs';
 
 const {

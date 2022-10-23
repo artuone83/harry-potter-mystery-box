@@ -1,7 +1,7 @@
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 
-import { render, screen } from '@testing-library/react';
 import { HEADER, HomePage, LINK_TEXT_CONTENT } from 'pages/home-page';
 
 describe('home page', () => {

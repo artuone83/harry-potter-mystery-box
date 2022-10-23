@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
-import { Main } from 'layouts/main';
+import { Main } from 'layouts';
 
 export const Root = () => (
   <Main>

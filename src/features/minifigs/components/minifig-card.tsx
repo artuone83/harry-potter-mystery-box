@@ -1,7 +1,8 @@
 import { Card, Link as MuiLink, Stack, Typography } from '@mui/material';
 import React, { FunctionComponent } from 'react';
 
-import { MinifigImg } from 'components/minifig-img';
+import { MinifigImg } from 'components';
+
 import { MaybeNull } from 'types';
 
 export interface MinifigCardProps {

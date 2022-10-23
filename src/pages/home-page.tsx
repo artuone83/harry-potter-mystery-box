@@ -1,8 +1,10 @@
 import { Button, Stack, Typography } from '@mui/material';
 import React, { FunctionComponent } from 'react';
 
-import { RouterLink } from 'components/router-link';
-import { Section } from 'layouts/section';
+import { RouterLink } from 'components';
+
+import { Section } from 'layouts';
+
 import { ROUTER_PATHS } from 'routes';
 
 export const HEADER = 'Lego minifigs mystery box';

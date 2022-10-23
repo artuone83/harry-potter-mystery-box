@@ -2,13 +2,16 @@ import { Box, Stack, TextField, Typography } from '@mui/material';
 import React from 'react';
 import { Controller, FormProvider, useForm } from 'react-hook-form';
 
-import { useFormProps } from './consts';
 import { Loading } from 'components';
+
 import { useSummaryParams } from 'features/summary/hooks';
+
 import { useMinifigDetailsQuery, useMinifigPartsQuery } from 'hooks';
+
 import { Section } from 'layouts';
 
 import { PartsSummary } from '../parts-summary';
+import { useFormProps } from './consts';
 
 export interface IFormInputs {
   name: string;

@@ -3,7 +3,7 @@ This folder contains facades for the various different libraries you use in your
 Doing this makes is much easier to update, and replace libraries since all the library specific code is in one place in your application. It also makes it easier to customize third party libraries to your own need. This pattern is called the _Facade Pattern_
 
 ```js
-import axios from "axios";
+import axios from 'axios';
 
 export function get(url, params = {}) {
   return axios({ url, params }).then((res) => res.data);
